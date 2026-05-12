@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>Quote Generator</h1>
+    <p id="text">Press the button!</p>
+    <button onclick="getQuote()">New Quote</button>
+    <script>
+        function getQuote() {
+            fetch("http://127.0.0.1:3000/quote")
+                .then(r => r.json())
+                .then(d => document.getElementById('text').innerText = d.quote);
+        }
+    </script>
+</body>
+</html>

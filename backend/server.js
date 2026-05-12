@@ -1,0 +1,10 @@
+import express from "express";
+import cors from "cors";
+const app = express();
+app.use(cors());
+app.use(express.json());
+let quotes = [{ author: "Ibrahim", quote: "Hello" }];
+app.get("/", (req, res) => res.send("Quote API is working!"));
+app.get("/quote", (req, res) => res.json(quotes[0]));
+app.post("/", (req, res) => { quotes.push(req.body); res.status(201).json(req.body); });
+app.listen(3000, () => console.log("Server running"));
